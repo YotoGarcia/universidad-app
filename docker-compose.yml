@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  clientes-app:
+    build:
+      context: .
+    container_name: universidad-app
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongodb
+    networks:
+      - my-network
+
+  mongodb:
+    image: mongo
+    container_name: mongo-client
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
