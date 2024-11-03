@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  clientes-app:
+  universidad-app:
     build:
       context: .
     container_name: universidad-app
@@ -13,7 +13,7 @@ services:
 
   mongodb:
     image: mongo
-    container_name: mongo-client
+    container_name: mongo-universidad
     ports:
       - "27018:27017"
     environment:
