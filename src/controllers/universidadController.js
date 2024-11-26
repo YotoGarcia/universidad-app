@@ -1,8 +1,9 @@
-const Cliente = require('../models/universidadModel');
+const Universidad = require('../models/universidadModel'); 
 
 exports.listUniversidad = async (req, res) => {
+    console.log("Servidor actual: ", process.env.HOST);
     try {
-        const universidad = await Universidad.find();
+        const universidad = await Universidad.find(); 
         return res.json(universidad);
     } catch (error) {
         return res.status(500).json({
@@ -29,7 +30,7 @@ exports.updateUniversidad = async (req, res) => {
         if (!updateUniversidad) {
             return res.status(404).json({ message: 'Universidad no encontrada' });
         }
-        return res.status(200).json({ message: 'Universidad actualizada con éxito', cliente: updateUniversidad });
+        return res.status(200).json({ message: 'Universidad actualizada con éxito', universidad: updateUniversidad });
     } catch (error) {
         return res.status(400).json({
             message: error.message

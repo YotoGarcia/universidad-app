@@ -1,13 +1,63 @@
 version: "3.8"
 services:
-  universidad-app:
+  universidad-app1:
+    container_name: universidad-app1
     build:
       context: .
-    container_name: universidad-app
     ports:
       - "4001:4001"
     depends_on:
       - mongodb
+    networks:
+      - my-network
+    environment:
+      HOST: universidad1
+
+  universidad-app2:
+    container_name: universidad-app2
+    build:
+      context: .
+    ports:
+      - "4002:4001" 
+    depends_on:
+      - mongodb
+    networks:
+      - my-network
+    environment:
+      HOST: universidad2
+  
+  universidad-app3:
+    container_name: universidad-app3
+    build:
+      context: .
+    ports:
+      - "4003:4001"
+    depends_on:
+      - mongodb
+    networks:
+      - my-network
+    environment:
+      HOST: universidad3
+  
+  universidad-app4:
+    container_name: universidad-app4
+    build:
+      context: .
+    ports:
+      - "4004:4001"
+    depends_on:
+      - mongodb
+    networks:
+      - my-network
+    environment:
+      HOST: universidad4
+
+  balanceador-carga:
+    container_name: balanceador-carga
+    build:
+      context: ./balanceador
+    ports:
+      - "4005:80"
     networks:
       - my-network
 
