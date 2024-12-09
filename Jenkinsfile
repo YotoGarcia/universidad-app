@@ -5,6 +5,9 @@ pipeline {
             args '-v /tmp/npm:/home/jenkins/.npm -e NPM_CONFIG_USERCONFIG=/home/jenkins/.npmrc'  
         }
     }
+    environment {
+    PATH = "/usr/bin/docker:$PATH"
+}
     stages {
         stage('Checkout') {
             steps {
