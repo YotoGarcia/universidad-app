@@ -5,9 +5,6 @@ pipeline {
             args '-v /tmp/npm:/home/jenkins/.npm -e NPM_CONFIG_USERCONFIG=/home/jenkins/.npmrc'  
         }
     }
-    environment {
-        
-    }
     stages {
         stage('Checkout') {
             steps {
