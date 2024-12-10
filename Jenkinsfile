@@ -2,16 +2,15 @@ pipeline {
     agent {
         docker {
             image 'node:20'
-            label 'docker' 
         }
     }
     environment {
-    PATH = "/usr/bin/docker:$PATH"
-}
+        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin:$PATH"
+    }
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/YotoGarcia/universidad-app', branch: 'main'  
+                git url: 'https://github.com/YotoGarcia/universidad-app', branch: 'main'
             }
         }
         stage('Install Dependencies') {
