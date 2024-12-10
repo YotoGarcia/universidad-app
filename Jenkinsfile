@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'node:20' 
-            args '-v /tmp/npm:/home/jenkins/.npm -e NPM_CONFIG_USERCONFIG=/home/jenkins/.npmrc'  
+            image 'node:20'
+            label 'docker' 
         }
     }
     environment {
