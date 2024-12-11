@@ -8,7 +8,9 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                withEnv(['NODEJS_HOME=/usr/local/bin/node', 'PATH+NODE=/usr/local/bin/npm']) {
+                    sh 'npm install'
+                }
             }
         }
         stage('Test') {
@@ -18,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker-compose -f docker-compose.yml up -d'
+                sh 'node index.js &'
             }
         }
     }
