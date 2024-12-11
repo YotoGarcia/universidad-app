@@ -1,12 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20'
-        }
-    }
-    environment {
-        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin:$PATH"
-    }
+    agent any
     stages {
         stage('Checkout') {
             steps {
@@ -25,7 +18,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Iniciar los servicios con Docker Compose
                 sh 'docker-compose -f docker-compose.yml up -d'
             }
         }
