@@ -8,9 +8,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                withEnv(['NODEJS_HOME=/usr/local/bin/node', 'PATH+NODE=/usr/local/bin/npm']) {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
         stage('Test') {
